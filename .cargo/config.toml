@@ -1,6 +1,6 @@
 [build]
 rustflags = ["-Cpanic=abort"]
-target = "./x86_64-bare.json"
+target = "./kernel/arch/x86_64/target.json"
 
 [unstable]
 build-std = ["core", "compiler_builtins"]
