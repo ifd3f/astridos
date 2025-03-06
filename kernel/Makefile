@@ -44,7 +44,7 @@ ISO = astridos.iso
 
 .PHONY: clean PHONY
 
-$(ISO): $(BIN)
+$(ISO): $(BIN) grub.cfg
 	mkdir -p $(ISODIR)/boot/grub
 	cp $(BIN) $(ISODIR)/boot/$(BIN)
 	cp grub.cfg $(ISODIR)/boot/grub/grub.cfg
