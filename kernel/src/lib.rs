@@ -7,7 +7,7 @@ mod panic_handler;
 const VGA_BUFFER: *mut u8 = 0xb8000 as *mut u8;
 
 #[no_mangle]
-pub extern "C" fn _start() -> ! {
+pub fn kmain() {
     const HELLO: &[u8] = b"Hello World!";
 
     for (i, &byte) in HELLO.iter().enumerate() {

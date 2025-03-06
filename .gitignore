@@ -3,3 +3,10 @@ target
 result
 *.out
 *.a
+.*
+
+/*.dsm
+/*.bin
+/*.bin.elf64
+/*.tar.gz
+
