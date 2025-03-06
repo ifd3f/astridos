@@ -15,15 +15,16 @@
         system = "x86_64-linux";
         overlays = [ rust-overlay.overlays.default ];
       };
+      pkgsCross = pkgs.pkgsCross.x86_64-embedded;
       naersk-lib = pkgs.callPackage naersk { };
-      rustToolchain = pkgs.rust-bin.fromRustupToolchainFile
-        ./rust-toolchain.toml;
+      rustToolchain =
+        pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
     in {
-      pkgs.x86_64-linux = pkgs;
+      debug.x86_64-linux = { inherit pkgs pkgsCross; };
       packages.x86_64-linux.naersk-lib = naersk-lib;
       devShells.x86_64-linux.default = with pkgs;
         mkShell {
-          buildInputs = [ rustToolchain pre-commit grub2 ];
+          buildInputs = [ rustToolchain pre-commit grub2 pkgsCross.stdenv.cc ];
           RUST_SRC_PATH = rustPlatform.rustLibSrc;
         };
     };
