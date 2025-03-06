@@ -24,7 +24,8 @@
       packages.x86_64-linux.naersk-lib = naersk-lib;
       devShells.x86_64-linux.default = with pkgs;
         mkShell {
-          buildInputs = [ rustToolchain pre-commit grub2 pkgsCross.stdenv.cc ];
+          buildInputs =
+            [ rustToolchain pre-commit grub2 pkgsCross.stdenv.cc xorriso ];
           RUST_SRC_PATH = rustPlatform.rustLibSrc;
         };
     };

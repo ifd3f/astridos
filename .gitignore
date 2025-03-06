@@ -5,8 +5,10 @@ result
 *.a
 .*
 
-/*.dsm
-/*.bin
-/*.bin.elf64
-/*.tar.gz
+*.dsm
+*.bin
+*.bin.elf64
+*.tar.gz
 
+isodir
+*.iso

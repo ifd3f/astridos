@@ -38,14 +38,20 @@ RUSTFLAGS += -C panic=abort
 # Objects
 OBJS := start.o kernel.a
 OBJS := $(OBJS:%=$(OBJDIR)%)
-BIN := ../kernel.$(ARCH).bin
+BIN := astridos.$(ARCH).bin
+ISODIR = isodir
+ISO = astridos.iso
 
-.PHONY: all clean PHONY
+.PHONY: clean PHONY
 
-all: $(BIN)
+$(ISO): $(BIN)
+	mkdir -p $(ISODIR)/boot/grub
+	cp $(BIN) $(ISODIR)/boot/$(BIN)
+	cp grub.cfg $(ISODIR)/boot/grub/grub.cfg
+	grub-mkrescue -o $@ isodir
 
 clean:
-	$(RM) -rf $(BIN) $(BIN).dsm $(OBJDIR)
+	$(RM) -rf $(BIN) $(BIN).dsm $(OBJDIR) *.iso $(ISODIR)
 
 # Final link command
 $(BIN): $(OBJS) arch/$(ARCH)/link.ld
