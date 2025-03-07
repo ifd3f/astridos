@@ -18,7 +18,7 @@
       pkgsCross = pkgs.pkgsCross.x86_64-embedded;
       naersk-lib = pkgs.callPackage naersk { };
       rustToolchain =
-        pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
+        pkgs.rust-bin.fromRustupToolchainFile ./kernel/rust-toolchain.toml;
     in {
       debug.x86_64-linux = { inherit pkgs pkgsCross; };
       packages.x86_64-linux.naersk-lib = naersk-lib;

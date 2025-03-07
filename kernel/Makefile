@@ -67,7 +67,7 @@ endif
 $(OBJDIR)kernel.a: PHONY Makefile $(TARGETSPEC)
 	@mkdir -p $(dir $@)
 	RUSTFLAGS="$(RUSTFLAGS)" $(CARGO) build -Z build-std=core --target=$(TARGETSPEC) --release
-	@cp --preserve ../target/target/release/libastridos.a $@
+	@cp --preserve target/target/release/libastridos.a $@
 
 # Compile architecture's assembly stub
 $(OBJDIR)start.o: arch/$(ARCH)/start.S Makefile
