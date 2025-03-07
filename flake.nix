@@ -10,11 +10,19 @@
   };
 
   outputs = { self, nixpkgs, rust-overlay, utils, naersk }:
-    let kernel = import ./kernel { inherit nixpkgs rust-overlay naersk; };
+    let
+      kernel = import ./kernel { inherit nixpkgs rust-overlay naersk; };
+      boot = import ./boot { inherit nixpkgs rust-overlay naersk; };
     in {
-      debug = { inherit kernel; };
+      debug = { inherit kernel boot; };
+
+      packages.x86_64-linux = {
+        boot = boot.boot;
+      };
+
       devShells.x86_64-linux = {
         kernel = kernel.devShell;
+        boot = boot.devShell;
         default = kernel.devShell;
       };
     };

@@ -1,0 +1,14 @@
+[package]
+name = "astridos-bootos"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+log = "0.4.26"
+uefi = "0.34.1"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
