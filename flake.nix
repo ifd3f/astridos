@@ -23,7 +23,6 @@
       devShells.x86_64-linux = {
         kernel = kernel.devShell;
         boot = boot.devShell;
-        default = kernel.devShell;
       };
     };
 }
