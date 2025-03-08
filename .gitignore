@@ -1,6 +1,6 @@
 .direnv
 target
-result
+result*
 *.out
 *.a
 .*
@@ -12,3 +12,4 @@ result
 
 isodir
 *.iso
+*.fd

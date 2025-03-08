@@ -13,5 +13,7 @@ fn main() -> Status {
 
     info!("hello world from astridos-bootos!");
 
+    loop {}
+
     Status::SUCCESS
 }
