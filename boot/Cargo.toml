@@ -5,10 +5,4 @@ edition = "2024"
 
 [dependencies]
 log = "0.4.26"
-uefi = "0.34.1"
-
-[profile.dev]
-panic = "abort"
-
-[profile.release]
-panic = "abort"
+uefi = { version = "0.34.1", features = ["logger", "panic_handler"] }
