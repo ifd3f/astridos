@@ -13,5 +13,4 @@ result*
 isodir
 *.iso
 *.fd
-!.envrc
 /.envrc
