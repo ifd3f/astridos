@@ -15,7 +15,8 @@ cp $ovmfdir/FV/* .
 chmod +rw *.fd
 
 # launch!
-qemu-system-x86_64 \
+sudo qemu-system-x86_64 \
     -drive if=pflash,format=raw,readonly=on,file=OVMF_CODE.fd \
     -drive if=pflash,format=raw,readonly=on,file=OVMF_VARS.fd \
-    -drive format=raw,file=fat:rw:esp
+    -drive format=raw,file=fat:rw:esp \
+    -net nic,model=virtio,macaddr=52:54:00:00:00:01 -net bridge,br=virbr0
